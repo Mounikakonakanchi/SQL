@@ -7,6 +7,7 @@ SHOW TABLES;
 ------------------------------------------------------
 -- Nov 7
 -- select 
+-- Extracts data from a Database
 select * from customer;
 
 select title , count(rental_rate) as rate from  film
@@ -22,6 +23,8 @@ select * from film
 where film_id is not null;
 
 -- count and ditinct count
+-- Count returns the number of rows 
+-- Distinct count returns distinct number of rows
 
 select count(*) from actor;
 
@@ -30,6 +33,7 @@ select count(distinct title) from film;
 select distinct(title) from film;
 
 -- limit
+-- returns only n number of values
 
 select first_name from actor
 limit 5;
@@ -39,13 +43,15 @@ where release_year <='2026'
 limit 3;
 
 -- where
+-- used to filter records based on a condition
 select * from film
 where rental_rate >=3;
 
 select film_id , rating from film
 where rating = 'G';
 
--- filtering
+-- filtering / Order by
+-- used to sort the result in aither asce or desc
 select rental_rate from film
 order by rental_rate;
 
@@ -54,6 +60,8 @@ where film_id is not null
 order by film_id asc;
 
 -- AND OR
+-- And is used to filter records based on more than one condition
+-- OR is used to filter records based on more than one condition
 select * from film
 where rental_rate >= 4 and rating = 'G'
 order by film_id desc;
@@ -63,6 +71,7 @@ where staff_id = 1 or amount >= 2
 order by payment_id;
 
 -- Not
+-- is a logical operator used to reverse a condition.
 select * from payment
 where not amount >=2
 order by payment_id;
@@ -72,6 +81,7 @@ where not payment_id in (2, 3, 5)
 order by payment_id;
 
 -- Like
+-- The like operator is used in where for a specified pattern
 select * from actor
 where first_name like 'a%';
 
@@ -79,6 +89,7 @@ select * from actor
 where last_name like 'a%n' ;
 
 -- Null
+-- used to check null values in the data
 select * from actor
 where first_name is not null;
 
@@ -86,11 +97,13 @@ select * from payment
 where payment_date is null;
 
 -- Between
+-- used to filter data bewteen two dates
 select * from payment
 where payment_date between '2005-05-25' and '2005-06-10';
 
 
 -- Group by and Having
+-- group by is used to group rows with same values 
 select count(*) as total from film
 group by rental_rate
 having count(*) > 20;
@@ -123,7 +136,7 @@ from actor;
 select first_name , length(first_name) as_lengthof_title
  from actor;
 
-
+-- A function in SQL that extracts a part of a string starting from a given position and for a given length.
 select email , substring(email , locate('@' , email)+1)as located_email
 from staff;
 
