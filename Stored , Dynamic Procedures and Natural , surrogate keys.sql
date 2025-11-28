@@ -85,10 +85,10 @@ SELECT * FROM column_select_statements;   -- to view
 
 
 -- Dynamic Procedure
-   -- It is a procedure builds SQL statements as text inside the procedure and runs them using
+   -- Dynamic procedure is a stored procedure that executes SQL statements dynamically at runtime
    -- It is used to build flexible queries
    -- Here the table and column names change at runtime
-
+   -- Useful when table and column names are unknown
 DELIMITER //
 
 CREATE PROCEDURE dynamic_sort_films(IN p_column VARCHAR(50))
